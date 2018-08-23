@@ -1,0 +1,29 @@
+SELECT DATE_TRUNC('hour',order_start_time) AS date_hr,
+       city_id,
+       COUNT(order_id) AS order_cnt
+FROM bh_dw.dwd_bh_ord_info
+WHERE (DATE_TRUNC('hour',order_start_time) BETWEEN '' AND '') AND city_id = 5 
+GROUP BY 1,2
+
+
+
+
+SELECT substr(order_start_time,12,2) AS hr,
+       city_id,
+       COUNT(order_id) AS order_cnt
+FROM bh_dw.dwd_bh_ord_info
+WHERE (order_start_time BETWEEN '2018-07-24' AND '2018-08-06') 
+      AND city_id in (5)  
+      AND pt >= '2018-07-24' 
+GROUP BY substr(order_start_time,12,2),
+         city_id
+
+SELECT substr(order_start_time,12,2) AS hr,
+       city_id,
+       COUNT(order_id) AS order_cnt
+FROM bh_dw.dwd_bh_ord_info
+WHERE (order_start_time BETWEEN '2018-07-24' AND '2018-08-06') 
+      AND city_id in (5)  
+      AND pt >= '2018-07-24' 
+GROUP BY substr(order_start_time,12,2),
+         city_id
